@@ -11,7 +11,7 @@ import json
 #
 import urllib.parse
 
-import getmusic
+import get_music
 
 from flask import Flask
 
@@ -22,7 +22,7 @@ app = Flask(__name__)
 
 
 def task(name, page, size):
-    search_data = getmusic.search(name,page,size)
+    search_data = get_music.search(name,page,size)
     return json.dumps(search_data, ensure_ascii=False)
     # for s in search_data['data']['list']:
     #     print(urllib.parse.unquote(s['name']))
@@ -52,7 +52,7 @@ def lists():
 def get_music():
     rid = request.form.get("rid")
     if rid:
-        data = getmusic.getDtail(rid)
+        data = get_music.getDtail(rid)
         return data
     else:
         return json.dumps({
